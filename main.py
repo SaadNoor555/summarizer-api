@@ -8,7 +8,7 @@ app = FastAPI()
 exstractive_model = Summarizer()
 os.environ['CUDA_VISIBLE_DEVICES'] = '0'
 
-abstructive_summarizer = pipeline('summarization')
+abstractive_summarizer = pipeline('summarization')
 
 
 class Data(BaseModel):
@@ -21,8 +21,8 @@ async def exstractive_summary(data: Data):
     return {'summary': full}
 
 
-@app.post("/abstructive/", status_code=200)
-async def abstructive_summary(data: Data):
-    result = abstructive_summarizer(data.body)[0]['summary_text']
+@app.post("/abstractive/", status_code=200)
+async def abstractive_summary(data: Data):
+    result = abstractive_summarizer(data.body)[0]['summary_text']
     return {'summary': result}
     
